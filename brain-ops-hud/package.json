@@ -1,0 +1,23 @@
+{
+  "name": "brain-ops-hud",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Code-rendered HUD, caption and disclaimer layer for BRAIN OPS episodes",
+  "scripts": {
+    "check": "node scripts/check-claims.mjs",
+    "studio": "remotion studio src/index.ts",
+    "still": "npm run check && remotion still src/index.ts Overlay out/ep01-still.png --frame=60",
+    "render:overlay": "npm run check && remotion render src/index.ts Overlay out/ep01-overlay.mov --codec=prores --prores-profile=4444 --pixel-format=yuva444p10le --image-format=png",
+    "render:composite": "npm run check && remotion render src/index.ts Overlay out/ep01-composite.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.250",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.250"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.3",
+    "typescript": "5.5.4"
+  }
+}

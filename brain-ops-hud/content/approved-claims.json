@@ -1,0 +1,17 @@
+{
+  "_note": "Single claims-review point. Only entries with status 'approved' can render. PLACEHOLDER TEXT: replace with legal/compliance-approved copy before any publish.",
+  "claims": {
+    "disc-fda": {
+      "type": "disclaimer",
+      "status": "approved",
+      "reviewer": "PLACEHOLDER",
+      "text": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+    },
+    "claim-example-focus": {
+      "type": "claim",
+      "status": "draft",
+      "reviewer": null,
+      "text": "EXAMPLE CLAIM. REPLACE WITH APPROVED COPY."
+    }
+  }
+}

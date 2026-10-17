@@ -1,0 +1,24 @@
+{
+  "episode": "ep01",
+  "title": "BRAIN OPS // EP 01",
+  "fps": 30,
+  "durationInFrames": 450,
+  "width": 1080,
+  "height": 1920,
+  "footage": null,
+  "hud": {
+    "label": "BRAIN OPS",
+    "status": "SYSTEM ONLINE",
+    "readouts": [
+      { "key": "FOCUS", "value": "87%" },
+      { "key": "LOAD", "value": "LOW" }
+    ]
+  },
+  "captions": [
+    { "from": 0, "to": 90, "text": "Placeholder caption one." },
+    { "from": 90, "to": 210, "text": "Placeholder caption two." }
+  ],
+  "claimCards": [],
+  "disclaimerId": "disc-fda",
+  "disclaimerFrom": 0
+}
