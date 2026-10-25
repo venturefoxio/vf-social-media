@@ -4,7 +4,7 @@ Revised five-slide editorial carousel for Chris Corkins, October 24, 2026. Dog p
 
 ## Portraits on slide 1
 
-- Palmer Luckey: Stephen McCarthy / Collision via Sportsfile. [Source](https://commons.wikimedia.org/wiki/File:Palmer_Luckey_(Collision_2019,_22_May_2019).jpg). [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). Cropped and scaled.
+- Palmer Luckey: Stephen McCarthy / Collision via Sportsfile, “Palmer Luckey (Collision 2019, 22 May 2019)”. [Source](https://commons.wikimedia.org/wiki/File:Palmer_Luckey_(Collision_2019,_22_May_2019).jpg). [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/). Cropped and scaled.
 - Ben Lamm: John Davidson. [Source](https://commons.wikimedia.org/wiki/File:Ben_Lamm_Photo.jpg). [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Cropped and scaled; this photo adaptation remains available under CC BY-SA 4.0. Other elements retain their respective rights.
 
 ## Other imagery
