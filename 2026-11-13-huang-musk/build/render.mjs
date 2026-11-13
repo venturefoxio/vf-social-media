@@ -14,7 +14,7 @@ const ctx = await browser.newContext({ viewport: { width: W, height: H }, device
 const page = await ctx.newPage();
 page.on('console', m => { if (m.type() === 'error') console.error('[page]', m.text()); });
 page.on('pageerror', e => console.error('[pageerror]', e.message));
-await page.goto('file://' + path.join(here, page_) + '?render=1' + (process.argv.includes('--nocap') ? '&nocap=1' : '') + (process.argv.includes('--poster') ? '&poster=1' : ''));
+await page.goto('file://' + path.join(here, page_) + '?render=1' + (process.argv.includes('--nocap') ? '&nocap=1' : '') + (process.argv.includes('--poster') ? '&poster=1' : '') + (arg('data', null) ? '&data=' + arg('data', null) : ''));
 await page.waitForFunction(() => window.__ready === true, null, { timeout: 60000 });
 const dur = await page.evaluate(() => window.__duration);
 const only = arg('only', null);

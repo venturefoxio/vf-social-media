@@ -113,3 +113,7 @@ The reviewer's dissent is recorded for Chris: the underlying story is a personal
 `python3 make_timeline.py <build_dir>` measures speech segments in the narration files, locks scene, headline and caption timings to them, writes `reel/data.js` and the audio mix. `node render.mjs` steps the page through `window.__seek(t)` at 30 fps and screenshots each frame; ffmpeg encodes the frames and muxes the mix. `node render.mjs --poster --only 3.0` produces the cover. Fonts: Anton and Archivo (both SIL Open Font License), from npm (`@fontsource/anton`, `@fontsource-variable/archivo`). Photo files and audio stems are not stored in this repository.
 
 Layout rules applied: reel safe zones (top 150, bottom 320, right 130), one headline size of 100 px or more, mustard #FFD429 as the single accent on #0D0D0D, handle and fox mark on the last card only, no dashes, no slide numbers, no name tags.
+
+## Variant: image on the closing card
+
+`../2026-11-13-huang-musk-chris-ig-reel-imageclose.mp4` is identical to the approved reel except for the last 3.5 seconds, where the sign-off card carries a photo of Jensen Huang (`Jensen huang stanford 2026-04-30 007.jpg`, Anders Eidesvik, CC BY-SA 4.0, already credited). It exists because the mini-side preflight blocked the approved cut's text-only close under the "image on every slide" rule. Chris has NOT approved this variant. It is here so he can choose between it and an exception for the approved cut. Built with `node render.mjs --data data_imageclose.js`.
