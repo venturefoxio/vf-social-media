@@ -19,11 +19,11 @@ window.REEL = {
     },
     {
      "src": "../assets/musk_3x4.jpg",
-     "w": 1125,
-     "x": -242,
+     "w": 1050,
+     "x": -251,
      "y": 0,
-     "ox": 0.42,
-     "oy": 0.22
+     "ox": 0.434,
+     "oy": 0.227
     }
    ],
    "lines": [
@@ -119,10 +119,10 @@ window.REEL = {
     {
      "src": "../assets/nvidia_hq.jpg",
      "w": 1900,
-     "x": -560,
+     "x": -40,
      "y": 0,
-     "ox": 0.6,
-     "oy": 0.5
+     "ox": 0.3,
+     "oy": 0.4
     }
    ],
    "lines": [
@@ -151,7 +151,7 @@ window.REEL = {
      "src": "../assets/nvidia_hq.jpg",
      "w": 2300,
      "x": -1002,
-     "y": -465,
+     "y": -510,
      "ox": 0.74,
      "oy": 0.7
     }
@@ -219,11 +219,6 @@ window.REEL = {
    7.26,
    9.69,
    "Musk replied in five words."
-  ],
-  [
-   10.14,
-   11.65,
-   "That would be an honor."
   ],
   [
    12.02,

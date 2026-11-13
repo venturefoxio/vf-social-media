@@ -80,7 +80,7 @@ r2 = lambda x: round(x, 2)
 scenes = [
     {"id": "hook", "start": 0.0, "end": r2(starts[1]), "kind": "duo",
      "photos": [{"src": "../assets/huang_010.jpg", "w": 640, "x": -33, "y": 0, "ox": 0.47, "oy": 0.4},
-                {"src": "../assets/musk_3x4.jpg", "w": 1125, "x": -242, "y": 0, "ox": 0.42, "oy": 0.22}],
+                {"src": "../assets/musk_3x4.jpg", "w": 1050, "x": -251, "y": 0, "ox": 0.434, "oy": 0.227}],
      "lines": [{"t": "JENSEN HUANG", "at": -1}, {"t": "IS OUT AT NVIDIA.", "at": -1},
                {"t": "MUSK WAS ASKED", "at": 0.35, "acc": 1}, {"t": "TO HIRE HIM.", "at": 0.47, "acc": 1}]},
     {"id": "reply", "start": r2(starts[1]), "end": r2(starts[2]), "kind": "full",
@@ -93,11 +93,11 @@ scenes = [
                {"t": "ONE CEO.", "at": r2(ab(2, 0)[0] + 0.58 * (ab(2, 0)[1] - ab(2, 0)[0]))},
                {"t": "NOW AN INTERIM.", "at": r2(ab(2, 1)[0] - 0.08), "acc": 1}]},
     {"id": "chair", "start": r2(starts[3]), "end": r2(starts[4]), "kind": "full",
-     "photos": [{"src": "../assets/nvidia_hq.jpg", "w": 1900, "x": -560, "y": 0, "ox": 0.6, "oy": 0.5}],
+     "photos": [{"src": "../assets/nvidia_hq.jpg", "w": 1900, "x": -40, "y": 0, "ox": 0.3, "oy": 0.4}],
      "lines": [{"t": "NVIDIA NEVER HAD", "at": r2(starts[3] + 0.1)}, {"t": "A BOARD CHAIR.", "at": r2(starts[3] + 0.26)},
                {"t": "UNTIL NOW.", "at": r2(ab(3, 2)[0] - 0.08), "acc": 1}]},
     {"id": "read", "start": r2(starts[4]), "end": end_start, "kind": "full",
-     "photos": [{"src": "../assets/nvidia_hq.jpg", "w": 2300, "x": -1002, "y": -465, "ox": 0.74, "oy": 0.7}],
+     "photos": [{"src": "../assets/nvidia_hq.jpg", "w": 2300, "x": -1002, "y": -510, "ox": 0.74, "oy": 0.7}],
      "lines": [{"t": "THE CHIPS", "at": r2(starts[4] + 0.1)}, {"t": "DIDN’T CHANGE.", "at": r2(starts[4] + 0.24)},
                {"t": "WHO’S IN", "at": r2(A5[1][0] - 0.08), "acc": 1}, {"t": "CHARGE DID.", "at": r2(A5[1][0] + 0.06), "acc": 1}]},
     {"id": "end", "start": end_start, "end": dur, "kind": "end",
@@ -110,6 +110,7 @@ caps = []
 for n in range(4):
     for k, c in enumerate(LINES[n]):
         a, b = ab(n, k)
+        if (n, k) == (1, 1): continue  # the quote is the headline; no duplicate caption
         caps.append([r2(a - 0.05), r2(b + 0.1), c])
 for i in range(len(caps) - 1):  # no overlaps
     if caps[i][1] > caps[i + 1][0]: caps[i][1] = caps[i + 1][0]

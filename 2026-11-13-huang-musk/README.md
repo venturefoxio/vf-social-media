@@ -30,7 +30,7 @@ Founders, that's the part to study. What in your company keeps deciding when you
 4. Here's the detail worth watching. Nvidia never had a board chair. It just named its first.
 5. The chips didn't change. Who's in charge did. Build your board before you need it.
 
-Lines 1 to 4 carry burned single-line captions. Line 5 appears verbatim as the on-screen headline, so it has no duplicate caption.
+Lines 1 to 4 carry burned single-line captions. The quoted reply in line 2 and all of line 5 appear verbatim as on-screen headlines, so they carry no duplicate caption.
 
 ## On-screen headlines
 
@@ -97,6 +97,8 @@ An independent reviewer (separate agent, fresh context, no access to the drafter
 - "Tuesday" and "this week" replaced with wording that does not go stale.
 - First person "I'm watching" removed from the synthetic narration.
 - Name tags removed, one headline size locked, hard-edged photo band, a composed Huang frame instead of an expressive one, credits re-set at 30 px.
+
+A second pass on the recut returned READY_FOR_CHRIS_REVIEW. Its three finish notes (a half-faded sign, one duplicate caption, a face near the right safe edge) were then fixed.
 
 The reviewer's dissent is recorded for Chris: the underlying story is a personal scandal, the hook leans on a quip, and a governance takeaway can read as newsjacking a man's exit.
 
