@@ -6,34 +6,31 @@
 <style>
 @font-face { font-family: "Anton"; src: url("../node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: block; }
 @font-face { font-family: "Archivo"; src: url("../node_modules/@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
-:root { --ground: #0D0D0D; --mustard: #FFD429; --white: #FFFFFF; --grey: #9A9A9A; }
+:root { --ground: #0D0D0D; --mustard: #FFD429; --white: #FFFFFF; --grey: #A6A6A6; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 1080px; height: 1920px; background: var(--ground); overflow: hidden; }
 #stage { position: relative; width: 1080px; height: 1920px; background: var(--ground); overflow: hidden; font-family: "Archivo", sans-serif; }
 .scene { position: absolute; inset: 0; opacity: 0; background: var(--ground); }
-/* photo zone: picture-led lower field. Reel safe zones: top 150, bottom 320, right 130. */
+/* Picture-led lower field with a hard top edge. Reel safe zones: top 150, bottom 320, right 130. */
 .zone { position: absolute; left: 0; top: 790px; width: 1080px; height: 1130px; overflow: hidden; background: var(--ground); }
 .panel { position: absolute; top: 0; height: 1130px; overflow: hidden; background: #111; }
 .panel.l { left: 0; width: 536px; }
 .panel.r { left: 544px; width: 536px; }
 .panel.f { left: 0; width: 1080px; }
 .panel img { position: absolute; display: block; max-width: none; will-change: transform; }
-.zone::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 150px; z-index: 3; background: linear-gradient(180deg, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%); }
+/* bottom scrim: keeps captions legible and goes solid under the platform UI band */
 .zone::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 640px; z-index: 3; background: linear-gradient(180deg, rgba(13,13,13,0) 0%, rgba(13,13,13,.5) 30%, rgba(13,13,13,.86) 52%, rgba(13,13,13,1) 62%, rgba(13,13,13,1) 100%); }
-.tag { position: absolute; z-index: 4; bottom: 468px; left: 90px; font-family: "Anton"; font-size: 46px; line-height: 1; letter-spacing: .03em; color: var(--white); text-transform: uppercase; padding-left: 26px; }
-.tag::before { content: ""; position: absolute; left: 0; top: 5px; width: 12px; height: 34px; background: var(--mustard); }
-.panel.r .tag { left: 46px; }
-/* headline: bottom aligned to the top of the photo zone */
+/* headline: bottom aligned to the top of the photo zone, one locked size for every scene */
 .head { position: absolute; left: 90px; width: 860px; bottom: 1130px; padding-bottom: 34px; font-family: "Anton"; text-transform: uppercase; color: var(--white); line-height: 1.04; letter-spacing: .004em; }
 .ln { display: block; width: max-content; white-space: nowrap; opacity: 0; will-change: transform, opacity; }
 .ln.acc { color: var(--mustard); }
 /* sign-off */
 .scene.end .fox { position: absolute; left: 78px; top: 300px; width: 240px; }
 .scene.end .head { bottom: auto; top: 590px; padding: 0; }
-.scene.end .handle { position: absolute; left: 90px; top: 1150px; font-family: "Archivo"; font-weight: 800; font-size: 62px; color: var(--mustard); letter-spacing: -.01em; opacity: 0; }
-.scene.end .pb { position: absolute; left: 90px; top: 1236px; font-family: "Archivo"; font-weight: 600; font-size: 40px; color: var(--white); opacity: 0; }
+.scene.end .handle { position: absolute; left: 90px; top: 1090px; font-family: "Archivo"; font-weight: 800; font-size: 62px; color: var(--mustard); letter-spacing: -.01em; opacity: 0; }
+.scene.end .pb { position: absolute; left: 90px; top: 1176px; font-family: "Archivo"; font-weight: 600; font-size: 40px; color: var(--white); opacity: 0; }
 .scene.end .pb b { color: var(--mustard); font-weight: 700; }
-.scene.end .credits { position: absolute; left: 90px; top: 1356px; width: 860px; font-family: "Archivo"; font-weight: 500; font-size: 26px; line-height: 1.38; color: var(--grey); opacity: 0; }
+.scene.end .credits { position: absolute; left: 90px; top: 1318px; width: 860px; font-family: "Archivo"; font-weight: 500; font-size: 30px; line-height: 1.4; color: var(--grey); opacity: 0; }
 /* burned captions */
 #cap { position: absolute; left: 90px; width: 860px; top: 1487px; height: 92px; display: flex; align-items: center; justify-content: center; z-index: 20; opacity: 0; }
 #cap span { font-family: "Archivo"; font-weight: 650; font-size: 46px; line-height: 1; color: #fff; background: rgba(0,0,0,.62); padding: 22px 30px 24px; border-radius: 20px; white-space: nowrap; }
@@ -45,6 +42,7 @@ html, body { width: 1080px; height: 1920px; background: var(--ground); overflow:
 <script>
 (function () {
   var R = window.REEL, stage = document.getElementById('stage'), cap = document.getElementById('cap'), capSpan = cap.firstChild;
+  var Q = location.search, POSTER = /poster=1/.test(Q), NOCAP = /nocap=1|poster=1/.test(Q);
   var clamp = function (x) { return Math.max(0, Math.min(1, x)); };
   var p3 = function (x) { x = clamp(x); return 1 - Math.pow(1 - x, 3); };
   var els = [];
@@ -57,9 +55,7 @@ html, body { width: 1080px; height: 1920px; background: var(--ground); overflow:
         var pn = document.createElement('div'); pn.className = 'panel ' + (s.kind === 'duo' ? (k ? 'r' : 'l') : 'f');
         var im = document.createElement('img'); im.src = p.src; im.style.width = p.w + 'px'; im.style.left = p.x + 'px'; im.style.top = p.y + 'px';
         im.style.transformOrigin = (p.ox * 100) + '% ' + (p.oy * 100) + '%';
-        pn.appendChild(im);
-        if (p.name) { var tg = document.createElement('div'); tg.className = 'tag'; tg.textContent = p.name; pn.appendChild(tg); }
-        zone.appendChild(pn); o.imgs.push(im);
+        pn.appendChild(im); zone.appendChild(pn); o.imgs.push(im);
       });
       sc.appendChild(zone);
     } else {
@@ -73,18 +69,15 @@ html, body { width: 1080px; height: 1920px; background: var(--ground); overflow:
     sc.appendChild(head); o.head = head;
     stage.insertBefore(sc, cap); els.push(o);
   });
-  // auto-fit each headline: largest size up to cap where every line fits the 860 px column
+  // One headline size for the whole reel: the largest size (up to the cap) at which every line of every scene fits the 860 px column.
   function fit() {
-    els.forEach(function (o) {
-      var poster = /poster=1/.test(location.search);
-      var capPx = o.s.kind === 'end' ? 150 : (poster ? 118 : 138), size = capPx;
-      for (; size >= 80; size -= 2) {
-        o.head.style.fontSize = size + 'px';
-        var ok = o.lns.every(function (x) { return x.el.getBoundingClientRect().width <= 860; });
-        if (ok) break;
-      }
-      o.size = size;
-    });
+    var size = POSTER ? 118 : 132;
+    for (; size >= 80; size -= 2) {
+      els.forEach(function (o) { o.head.style.fontSize = size + 'px'; });
+      var ok = els.every(function (o) { return o.lns.every(function (x) { return x.el.getBoundingClientRect().width <= 860; }); });
+      if (ok) break;
+    }
+    window.__headSize = size;
   }
   window.__seek = function (t) {
     els.forEach(function (o, i) {
@@ -94,7 +87,7 @@ html, body { width: 1080px; height: 1920px; background: var(--ground); overflow:
       o.el.style.opacity = vis ? a : 0;
       if (!vis) return;
       var u = clamp((t - s.start) / (s.end - s.start));
-      o.imgs.forEach(function (im, k) { im.style.transform = 'scale(' + (1 + 0.06 * u + (k ? 0.0 : 0.0)) + ')'; });
+      o.imgs.forEach(function (im) { im.style.transform = 'scale(' + (1 + 0.06 * u) + ')'; });
       o.lns.forEach(function (x) {
         var k = x.l.at < 0 ? 1 : p3((t - x.l.at) / 0.3);
         x.el.style.opacity = k; x.el.style.transform = 'translateY(' + ((1 - k) * 0.3) + 'em)';
@@ -102,12 +95,12 @@ html, body { width: 1080px; height: 1920px; background: var(--ground); overflow:
       if (s.kind === 'end') {
         var f = p3((t - s.start) / 0.5); o.fox.style.opacity = f; o.fox.style.transform = 'scale(' + (0.94 + 0.06 * f) + ')'; o.fox.style.transformOrigin = '0 50%';
         o.handle.style.opacity = p3((t - (s.start + 0.95)) / 0.35);
-        o.pb.style.opacity = p3((t - (s.start + 1.15)) / 0.35);
-        o.cr.style.opacity = p3((t - (s.start + 1.35)) / 0.35);
+        o.pb.style.opacity = p3((t - (s.start + 1.1)) / 0.35);
+        o.cr.style.opacity = p3((t - (s.start + 1.25)) / 0.35);
       }
     });
-    var c = null; for (var j = 0; j < R.caps.length; j++) { if (t >= R.caps[j][0] && t < R.caps[j][1]) { c = R.caps[j]; break; } }
-    if (/nocap=1|poster=1/.test(location.search)) c = null;
+    var c = null;
+    if (!NOCAP) for (var j = 0; j < R.caps.length; j++) { if (t >= R.caps[j][0] && t < R.caps[j][1]) { c = R.caps[j]; break; } }
     if (c) { if (capSpan.textContent !== c[2]) capSpan.textContent = c[2]; cap.style.opacity = 1; } else { cap.style.opacity = 0; }
   };
   window.__duration = R.dur;
