@@ -1,6 +1,6 @@
 # Huang exit / Musk reply: Chris Instagram Reel, 2026-11-13
 
-Status: APPROVED by Chris on 2026-11-12, about 4:50 pm PT ("Approved to post with all meta data image descriptions and copy necessary"). Publish handoff sent to Rocket in Slack #rocket (message ts 1794531453.028399) with commit-pinned media URLs and checksums. Publication is NOT yet confirmed: no receipt or permalink has come back. The cloud seat holds no publisher credential and did not post this itself.
+Status: PUBLISHED 2026-11-12, 6:20 pm PT, to Instagram @chriscorkins through Buffer by the cloud seat, on Chris's approval. Permalink: https://www.instagram.com/reel/DfqisynD_6K/ . Buffer post id 6af6739ec1a0010a5bf20a4a. The cut published is the image-close variant (`../2026-11-13-huang-musk-chris-ig-reel-imageclose.mp4`), which Chris chose by asking for whichever would engage better. Caption with credit line and the AI label were applied. Alt text was not: Buffer does not support it for video.
 
 ## Files
 
@@ -116,4 +116,4 @@ Layout rules applied: reel safe zones (top 150, bottom 320, right 130), one head
 
 ## Variant: image on the closing card
 
-`../2026-11-13-huang-musk-chris-ig-reel-imageclose.mp4` is identical to the approved reel except for the last 3.5 seconds, where the sign-off card carries a photo of Jensen Huang (`Jensen huang stanford 2026-04-30 007.jpg`, Anders Eidesvik, CC BY-SA 4.0, already credited). It exists because the mini-side preflight blocked the approved cut's text-only close under the "image on every slide" rule. Chris has NOT approved this variant. It is here so he can choose between it and an exception for the approved cut. Built with `node render.mjs --data data_imageclose.js`.
+`../2026-11-13-huang-musk-chris-ig-reel-imageclose.mp4` is identical to the approved reel except for the last 3.5 seconds, where the sign-off card carries a photo of Jensen Huang (`Jensen huang stanford 2026-04-30 007.jpg`, Anders Eidesvik, CC BY-SA 4.0, already credited). It exists because the mini-side preflight blocked the approved cut's text-only close under the "image on every slide" rule. Chris delegated the choice to whichever cut would engage better, and this is the one that was published. Built with `node render.mjs --data data_imageclose.js`.
