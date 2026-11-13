@@ -1,6 +1,6 @@
 # Huang exit / Musk reply: Chris Instagram Reel, 2026-11-13
 
-Status: DRAFT for Chris review. Not staged to any publisher. Not scheduled. Not published.
+Status: APPROVED by Chris on 2026-11-12, about 4:50 pm PT ("Approved to post with all meta data image descriptions and copy necessary"). Publish handoff sent to Rocket in Slack #rocket (message ts 1794531453.028399) with commit-pinned media URLs and checksums. Publication is NOT yet confirmed: no receipt or permalink has come back. The cloud seat holds no publisher credential and did not post this itself.
 
 ## Files
 
@@ -21,6 +21,12 @@ Now it has an interim CEO and its first chair. And when Elon Musk was asked to h
 Same chips. Different control layer.
 
 Founders, that's the part to study. What in your company keeps deciding when you're not in the room?
+
+Photos: Anders Eidesvik and Coolcaesar, CC BY-SA 4.0 (creativecommons.org/licenses/by-sa/4.0). Steve Jurvetson, CC BY 4.0. Via Wikimedia Commons, cropped.
+
+The word count above covers the four body paragraphs. The credit line is carried because the photo licences require it; it may move to a first comment but should not be dropped.
+
+Instagram AI label: on. The narration is a synthetic voice and the music is AI generated.
 
 ## Narration (verbatim)
 
